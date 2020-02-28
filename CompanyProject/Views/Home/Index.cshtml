@@ -1,0 +1,176 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+    <head>
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="~/Scripts/CompanyScript.js"></script>
+
+        <style>
+
+        th {
+            background-color: steelblue;
+            text-align: center;
+            color: black;
+        }
+
+        tr {
+            background-color: white;
+            color: black;
+        }
+        </style>
+    </head>
+    <body>
+
+        <!-- log in and sign up -->
+        <section id="logInSignUp"  style="display:block;background-color:whitesmoke">
+            <div class="container" style="padding-bottom:10px">
+                <div class="row text-center">
+                    <div class="col-lg-10 col-md-10 col-sm-10  col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+
+                        <!-- choice -->
+                        <div id="choice" style="display:block">
+                            <h3><b>Not logged in</b></h3> <br />
+                            <button type="button" id="btnSignUp1" class="btn btn-default" style="width:120px">Sign Up</button>
+                            <button type="button" id="btnLogIn1" class="btn btn-primary" style="margin-left:50px;width:120px">Log In</button>
+                        </div>
+
+                        <!-- log in -->
+                        <form method="post" action="post/" id="logIn" class="text-center" style="display:none">
+                            <h3><b>Log In</b></h3> <br />
+                            <div class="form-group form-inline">
+                                <label style="width: 150px; text-align: start">Username:</label>
+                                <input class="form-control" style="margin-left: 15px" type="text" id="logInEmail" />
+                            </div>
+
+                            <div class="form-group form-inline">
+                                <label style="width: 150px; text-align: start">Password:</label>
+                                <input class="form-control" style="margin-left: 15px" type="password" id="logInPassword" />
+                            </div>
+                            <button type="submit" id="btnLogIn2" class="btn btn-primary" style="width:120px">Log In</button> <br />
+                            <button type="button" id="btnBack1" class="btn btn-default" style="margin-top:10px;width:120px">Back</button>
+                        </form>
+
+                        <!-- sign up -->
+                        <form method="post" action="post/" id="signUp" class="text-center" style="display:none">
+                            <h3><b>Sign Up</b></h3> <br />
+                            <div class="form-group form-inline">
+                                <label style="width: 150px; text-align: start">Username:</label>
+                                <input class="form-control" style="margin-left: 15px" type="text" id="signUpEmail" />
+                            </div>
+                            <div class="form-group form-inline">
+                                <label style="width: 150px; text-align: start">Password:</label>
+                                <input class="form-control" style="margin-left: 15px" type="password" id="signUpPassword" />
+                            </div>
+                            <div class="form-group form-inline">
+                                <label style="width: 150px; text-align: start">Confirm Password:</label>
+                                <input class="form-control" style="margin-left: 15px" type="password" id="signUpConfirmPassword" />
+                            </div>
+                            <button type="submit" id="btnSignUp2" class="btn btn-primary" style="width:120px">Sign Up</button> <br />
+                            <button type="button" id="btnBack2" class="btn btn-default" style="margin-top:10px;width:120px">Back</button>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of log in and sign up -->
+
+        <!-- info and log out -->
+        <section id="infoLogOut"  style="display:none;background-color:whitesmoke">
+            <div class="container" style="padding-top:40px;padding-bottom:40px">
+                <div row class="text-center">
+
+                    <div class="col-lg-10 col-md-10 col-sm-10  col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                        <p>Logged user: <b id="info"></b> </p>
+                        <button class="btn btn-primary" id="btnLogOut" style="width:120px">Log Out</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of info and log out -->
+
+        <!-- search -->
+        <section id="search"  style="display:none;padding-top:40px;background-color:white">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-lg-10 col-md-10 col-sm-10  col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+
+                        <form method="post" action="/post" id="searchForm" class="form-inline">
+                            <h3>Search employee by year of employment</h3> <br />
+                            <div class="form-group " style="margin-left:20px">
+                                <label>From:</label>
+                                <input class="form-control" style="width:120px" type="number" id="yearStart" />
+                            </div>
+                            <div class="form-group " style="margin-left:20px">
+                                <label>To:</label>
+                                <input class="form-control" style="width:120px" type="number" id="yearEnd" />
+                            </div>
+                            <button type="submit" id="btnSearch" class="btn btn-primary" style="margin-left:40px;width:120px">Search</button><br/>
+                            <button type="button" id="btnRefresh" class="btn btn-default" style="margin-top:20px; width:120px">Refresh</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of search -->
+
+        <!-- data -->
+        <section id="data"  style="display:block; padding-top:30px;padding-bottom:20px; background-color:white">
+            <div class="container">
+                <div class="row text-center">
+                    <div id="dataa" class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 text-center">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of data -->
+
+        <!-- edit -->
+        <section id="edit" style="display:none;padding-top:40px; padding-bottom:40px;background-color:whitesmoke">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-lg-10 col-md-10 col-sm-10  col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+
+                        <form method="post" action="/post" id="editForm" class="text-center">
+                            <h3>Edit employee</h3> <br />
+                            <div class="form-group form-inline">
+                                <label style="width: 150px; text-align: start">Company:</label>
+                                <select class="form-control" style="margin-left: 15px; width:200px" id="companyId"></select>
+                            </div>
+                            <div class="form-group form-inline ">
+                                <label style="width: 150px; text-align: start">Name:</label>
+                                <input class="form-control" style="margin-left: 15px" type="text" id="nameEmployee" />
+                            </div>
+                            <div class="form-group form-inline ">
+                                <label style="width: 150px; text-align: start">Birth Year:</label>
+                                <input class="form-control" style="margin-left: 15px" type="number" id="birthYearEmployee" />
+                            </div>
+                            <div class="form-group form-inline ">
+                                <label style="width: 150px; text-align: start">Year of Employment:</label>
+                                <input class="form-control" style="margin-left: 15px" type="number" id="yearOfEmploymentEmployee" />
+                            </div>
+                            <div class="form-group form-inline ">
+                                <label style="width: 150px; text-align: start">Salary:</label>
+                                <input class="form-control" style="margin-left: 15px" type="number" id="salaryEmployee" />
+                            </div>
+
+                            <button type="submit" id="btnEdit2" class="btn btn-primary" style="width:120px">Edit</button>
+                            <button type="button" id="btnBack3" class="btn btn-default" style="margin-left:40px;width:120px">Back</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of edit -->
+
+
+
+
+    </body>
+</html>
