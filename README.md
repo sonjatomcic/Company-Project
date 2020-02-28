@@ -13,6 +13,6 @@ After opening the project:
 
 Register and login example:
 
- username: someone@mail.com
+  username: someone@mail.com
 
- password: Sifra.123
+  password: Sifra.123
